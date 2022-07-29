@@ -1,2 +1,4 @@
 env
 *googleusercontent.com.json
+*.json
+__pycache__
