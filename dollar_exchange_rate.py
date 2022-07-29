@@ -1,7 +1,6 @@
 import requests
 from xml.etree import ElementTree
 
-CB_ADDRES = 'https://www.cbr.ru/scripts/XML_daily.asp?ID=R01235'
 def transform_dollars_rubles():
     response = requests.get(CB_ADDRES)
 
