@@ -2,6 +2,7 @@ from google_api_worker import google_creds_getter, get_info_spreadsheets
 from dollar_exchange_rate import dollar_currency
 from db_worker import insert_info_db, create_deliveries_instance
 from datetime import datetime
+import time
 
 def dollar_time_converter(row, dollar_ruble):
     return (row[0], \
@@ -27,4 +28,7 @@ if __name__ == '__main__':
     creds = google_creds_getter()
     x = get_info_spreadsheets(creds)
     deliveries, session = create_deliveries_instance()
-    combine_all_functions(creds, deliveries, session)
+    while True:
+        combine_all_functions(creds, deliveries, session)
+        time.sleep(5)
+
