@@ -1,7 +1,7 @@
 user='test'
 password = 'test'
-hostname = 'db:5432'
-#hostname = 'localhost:5432'
+#hostname = 'db:5432'
+hostname = 'localhost:5432'
 database_name = 'test'
 
 SCOPES = ['https://www.googleapis.com/auth/spreadsheets.readonly']
