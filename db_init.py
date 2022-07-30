@@ -10,9 +10,9 @@ with engine.connect() as connection:
         # Create a table with the appropriate Columns
         Table(database_name, metadata,
               Column('Id', Integer, primary_key=True, nullable=False),
-              Column('Our Number', Integer),
-              Column('Delivery time', Date),
-              Column('Order Number', BigInteger),
-              Column('Price USD', Float),
-              Column('Price RUB', Float))
+              Column('Our_Number', Integer),
+              Column('Delivery_time', Date),
+              Column('Order_Number', BigInteger),
+              Column('Price_USD', Float),
+              Column('Price_RUB', Float))
         metadata.create_all()
