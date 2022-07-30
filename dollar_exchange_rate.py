@@ -1,7 +1,8 @@
 import requests
 from xml.etree import ElementTree
+from environment import CB_ADDRES
 
-def transform_dollars_rubles():
+def dollar_currency():
     response = requests.get(CB_ADDRES)
 
     tree = ElementTree.fromstring(response.content)
@@ -15,5 +16,5 @@ def transform_dollars_rubles():
     return None
 
 if __name__ == '__main__':
-    print(transform_dollars_rubles())
+    print(dollar_currency())
 
