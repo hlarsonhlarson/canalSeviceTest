@@ -20,3 +20,7 @@ services:
         limits:
           cpus: '1'
           memory: 4G
+  main_app:
+    build: .
+    links:
+    - postgres:db

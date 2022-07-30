@@ -1,11 +1,12 @@
-from sqlalchemy import create_engine, insert
-from sqlalchemy import create_engine, MetaData, Column, Table, Integer, Date, Float, BigInteger
+from sqlalchemy import create_engine, MetaData, Column, Table, Integer, Date, Float, BigInteger, insert
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
+from sqlalchemy.sql import text as sa_text
 from environment import user, password, hostname, database_name
 from datetime import datetime
 
 
+table_name = 'test'
 def create_deliveries_instance():
     engine = create_engine(f'postgresql://{user}:{password}@{hostname}/{database_name}')
     Session = sessionmaker(bind=engine)
@@ -23,8 +24,12 @@ def create_deliveries_instance():
     Base.metadata.create_all(engine)
     return Deliveries, session
 
+def delete_all_previous_info(deliveries_instance, session):
+    session.execute(sa_text(f'''TRUNCATE TABLE {table_name} RESTART IDENTITY;''').execution_options(autocommit=False))
+
 
 def insert_info_db(info, deliveries_instance, session):
+    delete_all_previous_info(deliveries_instance, session)
     deliveries = []
     for elem in info:
         delivery = deliveries_instance(our_number=elem[0],
